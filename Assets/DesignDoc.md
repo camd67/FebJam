@@ -21,6 +21,7 @@
   - Machete / knife (melee)
   - Chain gun (fast)
   - Launcher (aoe)
+- Camera slowly backs out while playing harder levels
 
 
 ## Visual theme
