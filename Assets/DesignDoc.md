@@ -30,9 +30,3 @@
 - [ ] Neon
 - [ ] Glitch?
 - [ ] Food
-
-## Scenes
-- [ ] Main menu
-- [ ] Play area
-- [ ] Upgrades / level up
-- [ ] Game over (leaderboard?)

@@ -1,7 +1,8 @@
 # Movement
 - [x] Camera tracker
 - [x] Keyboard movement
-- [ ] Follow mouse targeting
+- [x] Follow mouse targeting
+- [ ] Switch to CineMachine
 
 # Behavior
 - [ ] Spawn enemies
@@ -52,4 +53,10 @@
   - [ ] Projectiles
 - [ ] AOE
   - [ ] Projectiles
+
+## Scenes
+- [ ] Main menu
+- [ ] Play area
+- [ ] Upgrades / level up
+- [ ] Game over (leaderboard?)
 
