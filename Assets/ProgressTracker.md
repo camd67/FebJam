@@ -2,7 +2,8 @@
 - [x] Camera tracker
 - [x] Keyboard movement
 - [x] Follow mouse targeting
-- [ ] Switch to CineMachine
+- [x] Switch to CineMachine
+- [x] Follow cursor or player
 
 # Behavior
 - [ ] Spawn enemies

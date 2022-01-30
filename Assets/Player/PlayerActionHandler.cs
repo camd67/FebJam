@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,11 +6,28 @@ namespace Player
 {
     public class PlayerActionHandler : MonoBehaviour
     {
-        [SerializeField] private float moveSpeed;
-        [SerializeField] private float lookRotationSpeed;
 
-        [SerializeField] private Camera mainCamera;
-        [SerializeField] private CharacterController controller;
+        [SerializeField, Header("Camera Settings")]
+        public CameraFollowStyle cameraFollowStyle = CameraFollowStyle.LockOnPlayer;
+
+        [SerializeField]
+        public float cameraFollowThreshold = 10f;
+
+        [SerializeField]
+        private GameObject cameraTarget;
+
+        [SerializeField]
+        private Camera mainCamera;
+
+        private const float MaxCameraFollowDistanceSetting = 15f;
+
+        [SerializeField, Header("Character Controller Settings")]
+        private float moveSpeed;
+        [SerializeField]
+        private float lookRotationSpeed;
+
+        [SerializeField]
+        private CharacterController controller;
 
         private PlayerActionMaps playerActionMaps;
 
@@ -27,6 +45,8 @@ namespace Player
 
         private void Update()
         {
+            var transformPosition = transform.position;
+
             // First figure out our movement
             var moveInput = playerActionMaps.Player.Move.ReadValue<Vector2>();
             var movementDirection = new Vector3(moveInput.x, 0, moveInput.y);
@@ -41,22 +61,40 @@ namespace Player
 
             // Calculate our rotation for the player via an invisible plane attached to the player
             var mousePos = playerActionMaps.Player.Aim.ReadValue<Vector2>();
-            var playerPlane = new Plane(Vector3.up, transform.position);
+            var playerPlane = new Plane(Vector3.up, transformPosition);
             var lookTargetRay = mainCamera.ScreenPointToRay(new Vector3(mousePos.x, mousePos.y, 0));
             if (playerPlane.Raycast(lookTargetRay, out var raycastHit))
             {
                 var targetPoint = lookTargetRay.GetPoint(raycastHit);
-                var targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
-                // we only want top-down rotation so lock the other axes
-                targetPoint.x = 0;
-                targetPoint.z = 0;
+                var targetRotation = Quaternion.LookRotation(targetPoint - transformPosition);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lookRotationSpeed * Time.deltaTime);
+
+                // Adjust the camera follow target
+                if (cameraFollowStyle == CameraFollowStyle.LockOnPlayer)
+                {
+                    cameraTarget.transform.localPosition = Vector3.zero;
+                }
+                else
+                {
+                    var distanceToMouse = Vector3.Distance(transformPosition, targetPoint);
+                    cameraTarget.transform.localPosition = new Vector3(
+                        0,
+                        0,
+                        Mathf.Clamp(distanceToMouse, 0, cameraFollowThreshold)
+                    );
+                }
             }
         }
 
         private void HandleFire(InputAction.CallbackContext context)
         {
             Debug.Log($"Fire - {context.phase}");
+        }
+
+        public enum CameraFollowStyle
+        {
+            LockOnPlayer = 1,
+            FollowCursor = 2,
         }
     }
 }
