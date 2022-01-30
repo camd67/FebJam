@@ -6,7 +6,8 @@
 - [x] Follow cursor or player
 
 # Behavior
-- [ ] Spawn enemies
+- [x] Spawn enemies randomly
+  - [ ] Spawn enemies in waves
 - [ ] Tower HP
 - [ ] Player HP
 - [ ] Enemy HP
@@ -15,7 +16,7 @@
 - [ ] Upgrades
   - [ ] Upgrade shop? Levels?
 - [ ] Varied enemy behaviors
-  - [ ] Focus tower
+  - [x] Focus tower
   - [ ] Focus player
   - [ ] Switch
 - [ ] Weapon types
@@ -41,6 +42,7 @@
 - [ ] Terrain
 - [ ] Tower
 - [ ] Player
+  - [ ] Cursor target
 
 ## Enemies
 - [ ] Basic
