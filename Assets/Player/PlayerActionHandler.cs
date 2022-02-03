@@ -1,4 +1,5 @@
 using System;
+using Shared;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,6 +29,12 @@ namespace Player
 
         [SerializeField]
         private CharacterController controller;
+
+        [SerializeField, Header("Weapon Settings")]
+        private GameObject projectilePrefab;
+
+        [SerializeField]
+        private Transform projectileSpawnLocation;
 
         private PlayerActionMaps playerActionMaps;
 
@@ -88,7 +95,8 @@ namespace Player
 
         private void HandleFire(InputAction.CallbackContext context)
         {
-            Debug.Log($"Fire - {context.phase}");
+            var projectile = Instantiate(projectilePrefab, projectileSpawnLocation.position, transform.rotation);
+            projectile.GetComponent<Projectile>().firer = gameObject;
         }
 
         public enum CameraFollowStyle

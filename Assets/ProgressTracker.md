@@ -8,9 +8,10 @@
 # Behavior
 - [x] Spawn enemies randomly
   - [ ] Spawn enemies in waves
-- [ ] Tower HP
-- [ ] Player HP
-- [ ] Enemy HP
+- [x] Tower HP
+- [x] Player HP
+- [x] Enemy HP
+- [ ] HP bar
 - [ ] Fight enemies
 - [ ] Enemies targeting player / tower
 - [ ] Upgrades

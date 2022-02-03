@@ -31,10 +31,12 @@ namespace Enemy
             spawnedEnemy.GetComponent<EnemyDirectTargetAi>().target = towerTarget;
         }
 
+#if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(towerTarget.position, spawnDistance);
         }
+#endif
     }
 }
