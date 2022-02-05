@@ -95,8 +95,7 @@ namespace Player
 
         private void HandleFire(InputAction.CallbackContext context)
         {
-            var projectile = Instantiate(projectilePrefab, projectileSpawnLocation.position, transform.rotation);
-            projectile.GetComponent<Projectile>().firer = gameObject;
+            Projectile.Fire(projectilePrefab, projectileSpawnLocation.position, DamageGroup.Player, gameObject);
         }
 
         public enum CameraFollowStyle

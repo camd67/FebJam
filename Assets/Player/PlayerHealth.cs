@@ -7,18 +7,23 @@ namespace Player
     public class PlayerHealth : MonoBehaviour, IDamageTaker
     {
         [SerializeField, Tooltip("Set automatically at startup, debug only.")]
-        private int currentHealth;
+        private float currentHealth;
 
         [SerializeField]
-        private int initialHealth;
+        private float initialHealth;
 
         private void Start()
         {
             currentHealth = initialHealth;
         }
 
-        public void TakeDamage(int amount)
+        public void TakeDamage(float amount, DamageGroup fromGroup)
         {
+            if (fromGroup == DamageGroup.Player)
+            {
+                return;
+            }
+
             currentHealth -= amount;
             if (currentHealth < 0)
             {

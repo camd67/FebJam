@@ -7,6 +7,14 @@ namespace Shared
      */
     public class Projectile : MonoBehaviour
     {
+        public static void Fire(GameObject projectilePrefab, Vector3 spawnLocation, DamageGroup damageGroup, GameObject owner)
+        {
+            var projectileGameObject = Instantiate(projectilePrefab, spawnLocation, owner.transform.rotation);
+            var projectile = projectileGameObject.GetComponent<Projectile>();
+            projectile.firer = owner;
+            projectile.sourceDamageGroup = damageGroup;
+        }
+
         [SerializeField]
         private float speed;
 
@@ -18,6 +26,9 @@ namespace Shared
 
         [SerializeField, Tooltip("Tracks who fired the projectile. Optional")]
         public GameObject firer;
+
+        [SerializeField, Tooltip("What group is producing the damage for this projectile. Required")]
+        public DamageGroup sourceDamageGroup;
 
         private void Update()
         {
@@ -44,7 +55,7 @@ namespace Shared
 
             if (other.TryGetComponent(out IDamageTaker damageTaker))
             {
-                damageTaker.TakeDamage(damage);
+                damageTaker.TakeDamage(damage, sourceDamageGroup);
             }
             Destroy(gameObject);
         }

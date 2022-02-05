@@ -2,6 +2,9 @@ namespace Shared
 {
     public interface IDamageTaker
     {
-        void TakeDamage(int amount);
+        /**
+         * Takes damage with the given amount and from which group.
+         */
+        void TakeDamage(float amount, DamageGroup fromGroup);
     }
 }
