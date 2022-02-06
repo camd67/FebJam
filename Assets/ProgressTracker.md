@@ -41,7 +41,8 @@
 # Models
 ## Main
 - [ ] Terrain
-- [ ] Tower
+- [x] Tower
+  - [ ] Textures
 - [ ] Player
   - [ ] Cursor target
 
