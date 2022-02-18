@@ -24,7 +24,7 @@ namespace Tower
             }
 
             currentHealth -= amount;
-            if (currentHealth < 0)
+            if (currentHealth <= 0)
             {
                 Destroy(gameObject);
                 Debug.Log($"{name} was destroyed");

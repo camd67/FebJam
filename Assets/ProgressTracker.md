@@ -11,7 +11,7 @@
 - [x] Tower HP
 - [x] Player HP
 - [x] Enemy HP
-- [ ] HP bar
+- [x] HP bar
 - [ ] Fight enemies
 - [ ] Enemies targeting player / tower
 - [ ] Upgrades

@@ -12,9 +12,13 @@ namespace Enemy
         [SerializeField]
         private float initialHealth;
 
+        [SerializeField]
+        private HealthBar healthBar;
+
         private void Start()
         {
             currentHealth = initialHealth;
+            healthBar.ComputeCurrent(currentHealth, initialHealth);
         }
 
         public void TakeDamage(float amount, DamageGroup fromGroup)
@@ -25,7 +29,8 @@ namespace Enemy
             }
 
             currentHealth -= amount;
-            if (currentHealth < 0)
+            healthBar.ComputeCurrent(currentHealth, initialHealth);
+            if (currentHealth <= 0)
             {
                 Destroy(gameObject);
                 Debug.Log($"{name} was destroyed");
