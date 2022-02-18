@@ -142,7 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de62a5ecd4228354a845e8f289f3d6df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 40
   damage: 10
   despawnBoundary: 500
   firer: {fileID: 0}
+  sourceDamageGroup: 0
