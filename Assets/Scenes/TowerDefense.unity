@@ -346,7 +346,7 @@ MonoBehaviour:
   controller: {fileID: 236605301}
   projectilePrefab: {fileID: 6654354310050663819, guid: 4d9b127626585f94db38c00bf6684f0f, type: 3}
   projectileSpawnLocation: {fileID: 1285006234}
-  shotsPerSecond: 5
+  shotsPerSecond: 10
   crosshair: {fileID: 1367706874}
   shellParticleSystem: {fileID: 2000812779}
 --- !u!4 &236605304
@@ -6265,6 +6265,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8149803588602928684, guid: 3e08c6eeef89a0044b2081915f2474a9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149803588602928685, guid: 3e08c6eeef89a0044b2081915f2474a9, type: 3}
+      propertyPath: hideAtFull
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8149803588602928685, guid: 3e08c6eeef89a0044b2081915f2474a9, type: 3}

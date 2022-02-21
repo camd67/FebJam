@@ -161,7 +161,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &8149803588602928686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +195,8 @@ MonoBehaviour:
   followOffset: {x: 0, y: 2, z: 2}
   current: 0
   healthBarSprite: {fileID: 8149803588824990710}
+  healthBarBackgroundSprite: {fileID: 8149803587894797219}
+  hideAtFull: 1
 --- !u!1 &8149803588824990708
 GameObject:
   m_ObjectHideFlags: 0
