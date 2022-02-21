@@ -288,6 +288,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46137a9f22f713a41a79cb4169af7189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &132706003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9043215327318917716, guid: cb08949c9f124ce44b4c7beeb4cb46f6, type: 3}
+  m_PrefabInstance: {fileID: 1285006232}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &236605300
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +354,7 @@ MonoBehaviour:
   shotsPerSecond: 10
   crosshair: {fileID: 1367706874}
   shellParticleSystem: {fileID: 2000812779}
+  gunBarrel: {fileID: 132706003}
 --- !u!4 &236605304
 Transform:
   m_ObjectHideFlags: 0

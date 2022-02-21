@@ -37,6 +37,7 @@
 - [ ] Lose condition
   - [ ] Player HP loss
   - [ ] Tower HP loss
+- [ ] Minimap
 
 # Models
 ## Main

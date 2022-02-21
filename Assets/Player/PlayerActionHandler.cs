@@ -47,6 +47,13 @@ namespace Player
         [SerializeField]
         private ParticleSystem shellParticleSystem;
 
+        [SerializeField]
+        private GameObject gunBarrel;
+
+        private bool isFiring;
+
+        private float barrelRotationSpeed;
+
         private void Awake()
         {
             playerActionMaps ??= new PlayerActionMaps();
@@ -63,6 +70,13 @@ namespace Player
             #if UNITY_EDITOR
             Cursor.visible = true;
             #endif
+
+            // Our gun has 6 barrels, so we need 1 rotation for every 6 shots fired (all per second)
+            // Since our rotation speed is in "angles per second" we first get our angles per shot
+            const int anglesPerShot = 360 / 6;
+            // then figure out how many angles per second we need to go based on the number of shots per second.
+            // So... if we had 6 shots per second the math would be 360 / 6 * 6 meaning we do a single rotation per second.
+            barrelRotationSpeed = anglesPerShot * shotsPerSecond;
         }
 
         private void OnDestroy()
@@ -114,17 +128,24 @@ namespace Player
                     );
                 }
             }
+
+            if (isFiring)
+            {
+                gunBarrel.transform.Rotate(0, barrelRotationSpeed * Time.deltaTime, 0);
+            }
         }
 
         private void StartFire(InputAction.CallbackContext context)
         {
             CancelInvoke(nameof(FireProjectile));
             InvokeRepeating(nameof(FireProjectile), 0, 1 / shotsPerSecond);
+            isFiring = true;
         }
 
         private void StopFire(InputAction.CallbackContext context)
         {
             CancelInvoke(nameof(FireProjectile));
+            isFiring = false;
         }
 
         private void FireProjectile()
