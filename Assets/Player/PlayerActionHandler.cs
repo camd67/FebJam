@@ -30,6 +30,9 @@ namespace Player
         [SerializeField]
         private CharacterController controller;
 
+        [SerializeField]
+        private GameObject crosshair;
+
         [SerializeField, Header("Weapon Settings")]
         private GameObject projectilePrefab;
 
@@ -43,6 +46,8 @@ namespace Player
             playerActionMaps ??= new PlayerActionMaps();
             playerActionMaps.Player.Enable();
             playerActionMaps.Player.Fire.performed += HandleFire;
+
+            Cursor.visible = false;
         }
 
         private void OnDestroy()
@@ -66,8 +71,11 @@ namespace Player
             // - gravity
             controller.SimpleMove(movementDirection * moveMagnitude);
 
-            // Calculate our rotation for the player via an invisible plane attached to the player
             var mousePos = playerActionMaps.Player.Aim.ReadValue<Vector2>();
+
+            crosshair.transform.position = mousePos;
+
+            // Calculate our rotation for the player via an invisible plane attached to the player
             var playerPlane = new Plane(Vector3.up, transformPosition);
             var lookTargetRay = mainCamera.ScreenPointToRay(new Vector3(mousePos.x, mousePos.y, 0));
             if (playerPlane.Raycast(lookTargetRay, out var raycastHit))

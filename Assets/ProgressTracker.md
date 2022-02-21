@@ -43,8 +43,9 @@
 - [ ] Terrain
 - [x] Tower
   - [ ] Textures
-- [ ] Player
-  - [ ] Cursor target
+- [x] Player
+  - [x] Cursor target
+  - [ ] Textures
 
 ## Enemies
 - [ ] Basic
