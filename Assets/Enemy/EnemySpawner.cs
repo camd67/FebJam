@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,6 +11,9 @@ namespace Enemy
 
         [SerializeField]
         private Transform towerTarget;
+
+        [SerializeField]
+        private Transform playerTarget;
 
         [SerializeField]
         private float spawnDistance;
@@ -28,7 +32,15 @@ namespace Enemy
             var spawnPoint3d = new Vector3(spawnPoint2d.x, 0, spawnPoint2d.y);
 
             var spawnedEnemy = Instantiate(basicEnemyPrefab, spawnPoint3d, Quaternion.identity);
-            spawnedEnemy.GetComponent<EnemyDirectTargetAi>().target = towerTarget;
+            // For now, randomly switch between player and tower targets
+            if (Random.value > 0.5)
+            {
+                spawnedEnemy.GetComponent<EnemyDirectTargetAi>().target = towerTarget;
+            }
+            else
+            {
+                spawnedEnemy.GetComponent<EnemyDirectTargetAi>().target = playerTarget;
+            }
         }
 
 #if UNITY_EDITOR

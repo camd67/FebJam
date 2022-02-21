@@ -18,7 +18,7 @@
   - [ ] Upgrade shop? Levels?
 - [ ] Varied enemy behaviors
   - [x] Focus tower
-  - [ ] Focus player
+  - [x] Focus player
   - [ ] Switch
 - [ ] Weapon types
   - [ ] Melee (sword? Knife? Other?)
