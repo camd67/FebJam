@@ -44,6 +44,9 @@ namespace Player
         [SerializeField]
         private GameObject crosshair;
 
+        [SerializeField]
+        private ParticleSystem shellParticleSystem;
+
         private void Awake()
         {
             playerActionMaps ??= new PlayerActionMaps();
@@ -127,6 +130,7 @@ namespace Player
         private void FireProjectile()
         {
             Projectile.Fire(projectilePrefab, projectileSpawnLocation.position, DamageGroup.Player, gameObject);
+            shellParticleSystem.Emit(1);
         }
 
         public enum CameraFollowStyle
