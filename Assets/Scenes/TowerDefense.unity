@@ -344,9 +344,10 @@ MonoBehaviour:
   moveSpeed: 8
   lookRotationSpeed: 10
   controller: {fileID: 236605301}
-  crosshair: {fileID: 1367706874}
   projectilePrefab: {fileID: 6654354310050663819, guid: 4d9b127626585f94db38c00bf6684f0f, type: 3}
   projectileSpawnLocation: {fileID: 1285006234}
+  shotsPerSecond: 5
+  crosshair: {fileID: 1367706874}
 --- !u!4 &236605304
 Transform:
   m_ObjectHideFlags: 0

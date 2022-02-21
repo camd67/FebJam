@@ -30,9 +30,6 @@ namespace Player
         [SerializeField]
         private CharacterController controller;
 
-        [SerializeField]
-        private GameObject crosshair;
-
         [SerializeField, Header("Weapon Settings")]
         private GameObject projectilePrefab;
 
@@ -41,13 +38,28 @@ namespace Player
 
         private PlayerActionMaps playerActionMaps;
 
+        [SerializeField, Tooltip("Fire rate in shots per second")]
+        private float shotsPerSecond;
+
+        [SerializeField]
+        private GameObject crosshair;
+
         private void Awake()
         {
             playerActionMaps ??= new PlayerActionMaps();
             playerActionMaps.Player.Enable();
-            playerActionMaps.Player.Fire.performed += HandleFire;
+            // Setup our fire handlers so that the player can hold down the fire button
+            // to auto-fire.
+            playerActionMaps.Player.Fire.started += StartFire;
+            playerActionMaps.Player.Fire.canceled += StopFire;
 
+            // Turn the cursor off
             Cursor.visible = false;
+            // but... toggle it back on if we're working on the game!
+            // It's kinda annoying when the cursor is off since it's off until we unfocus the game window.
+            #if UNITY_EDITOR
+            Cursor.visible = true;
+            #endif
         }
 
         private void OnDestroy()
@@ -101,7 +113,18 @@ namespace Player
             }
         }
 
-        private void HandleFire(InputAction.CallbackContext context)
+        private void StartFire(InputAction.CallbackContext context)
+        {
+            CancelInvoke(nameof(FireProjectile));
+            InvokeRepeating(nameof(FireProjectile), 0, 1 / shotsPerSecond);
+        }
+
+        private void StopFire(InputAction.CallbackContext context)
+        {
+            CancelInvoke(nameof(FireProjectile));
+        }
+
+        private void FireProjectile()
         {
             Projectile.Fire(projectilePrefab, projectileSpawnLocation.position, DamageGroup.Player, gameObject);
         }
