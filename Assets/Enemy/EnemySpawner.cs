@@ -1,4 +1,5 @@
-using System;
+using Player;
+using Tower;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,10 +11,10 @@ namespace Enemy
         private GameObject basicEnemyPrefab;
 
         [SerializeField]
-        private Transform towerTarget;
+        private TowerHealth towerTarget;
 
         [SerializeField]
-        private Transform playerTarget;
+        private PlayerHealth playerTarget;
 
         [SerializeField]
         private float spawnDistance;
@@ -35,11 +36,13 @@ namespace Enemy
             // For now, randomly switch between player and tower targets
             if (Random.value > 0.5)
             {
-                spawnedEnemy.GetComponent<EnemyDirectTargetAi>().target = towerTarget;
+                spawnedEnemy.GetComponent<EnemyDirectTargetAi>().target = towerTarget.transform;
+                spawnedEnemy.GetComponentInChildren<EnemyAttacker>().target = towerTarget;
             }
             else
             {
-                spawnedEnemy.GetComponent<EnemyDirectTargetAi>().target = playerTarget;
+                spawnedEnemy.GetComponent<EnemyDirectTargetAi>().target = playerTarget.transform;
+                spawnedEnemy.GetComponentInChildren<EnemyAttacker>().target = playerTarget;
             }
         }
 
@@ -47,7 +50,7 @@ namespace Enemy
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(towerTarget.position, spawnDistance);
+            Gizmos.DrawWireSphere(Vector3.zero, spawnDistance);
         }
 #endif
     }

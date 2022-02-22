@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Shared
 {
     public interface IDamageTaker
@@ -6,5 +8,7 @@ namespace Shared
          * Takes damage with the given amount and from which group.
          */
         void TakeDamage(float amount, DamageGroup fromGroup);
+
+        Vector3 getLocation();
     }
 }

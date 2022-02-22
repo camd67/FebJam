@@ -36,5 +36,10 @@ namespace Player
                 Debug.Log("Player was destroyed");
             }
         }
+
+        public Vector3 getLocation()
+        {
+            return transform.position;
+        }
     }
 }

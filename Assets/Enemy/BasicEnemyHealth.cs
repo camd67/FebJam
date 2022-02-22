@@ -36,5 +36,10 @@ namespace Enemy
                 Debug.Log($"{name} was destroyed");
             }
         }
+
+        public Vector3 getLocation()
+        {
+            return transform.position;
+        }
     }
 }

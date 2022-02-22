@@ -12,8 +12,8 @@
 - [x] Player HP
 - [x] Enemy HP
 - [x] HP bar
-- [ ] Fight enemies
-- [ ] Enemies targeting player / tower
+- [x] Fight enemies
+- [x] Enemies targeting player / tower
 - [ ] Upgrades
   - [ ] Upgrade shop? Levels?
 - [ ] Varied enemy behaviors
