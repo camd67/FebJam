@@ -14,6 +14,12 @@ namespace Enemy
         [SerializeField]
         private float attacksPerSecond;
 
+        [SerializeField]
+        private AudioClip[] attackClips;
+
+        [SerializeField]
+        private AudioSource attackAudioSource;
+
         private float lastAttackTime;
 
         public IDamageTaker target;
@@ -29,6 +35,9 @@ namespace Enemy
             {
                 lastAttackTime = Time.time;
                 target.TakeDamage(attackDamage, damageGroup);
+                attackAudioSource.clip = attackClips[Random.Range(0, attackClips.Length)];
+                attackAudioSource.pitch = Random.Range(0.5f, 1.5f);
+                attackAudioSource.Play();
             }
         }
     }

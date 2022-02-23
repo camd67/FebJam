@@ -50,6 +50,9 @@ namespace Player
         [SerializeField]
         private GameObject gunBarrel;
 
+        [SerializeField]
+        private AudioSource gunFireEmitter;
+
         private bool isFiring;
 
         private float barrelRotationSpeed;
@@ -152,6 +155,7 @@ namespace Player
         {
             Projectile.Fire(projectilePrefab, projectileSpawnLocation.position, DamageGroup.Player, gameObject);
             shellParticleSystem.Emit(1);
+            gunFireEmitter.Play();
         }
 
         public enum CameraFollowStyle
