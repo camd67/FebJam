@@ -32,7 +32,7 @@ namespace Enemy
             var spawnPoint2d = Random.insideUnitCircle.normalized * spawnDistance;
             var spawnPoint3d = new Vector3(spawnPoint2d.x, 0, spawnPoint2d.y);
 
-            var spawnedEnemy = Instantiate(basicEnemyPrefab, spawnPoint3d, Quaternion.identity);
+            var spawnedEnemy = Instantiate(basicEnemyPrefab, spawnPoint3d, Quaternion.identity, transform);
             // For now, randomly switch between player and tower targets
             if (Random.value > 0.5)
             {
