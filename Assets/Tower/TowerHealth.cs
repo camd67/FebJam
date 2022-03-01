@@ -1,5 +1,6 @@
 using Shared;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Tower
 {
@@ -31,8 +32,7 @@ namespace Tower
             healthBar.ComputeCurrent(currentHealth, initialHealth);
             if (currentHealth <= 0)
             {
-                Destroy(gameObject);
-                Debug.Log($"{name} was destroyed");
+                SceneManager.LoadScene("GameOver");
             }
         }
 

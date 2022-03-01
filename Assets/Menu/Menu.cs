@@ -27,6 +27,11 @@ namespace Menu
             {
                 SceneManager.LoadScene(sceneToLoad);
             };
+            playerActionMaps.Player.Quit.performed += context =>
+            {
+                Debug.Log("quit");
+                Application.Quit();
+            };
         }
 
         private void OnDestroy()

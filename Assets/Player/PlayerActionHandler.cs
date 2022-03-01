@@ -61,6 +61,11 @@ namespace Player
         {
             playerActionMaps ??= new PlayerActionMaps();
             playerActionMaps.Player.Enable();
+            playerActionMaps.Player.Quit.performed += context =>
+            {
+                Debug.Log("quit");
+                Application.Quit();
+            };
             // Setup our fire handlers so that the player can hold down the fire button
             // to auto-fire.
             playerActionMaps.Player.Fire.started += StartFire;

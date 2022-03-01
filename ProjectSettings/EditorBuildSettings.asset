@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TowerDefense.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: a4cbade902a5de14a832476db351f411
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 44ecfcc2a467d5f41a00a5721d6a9bbe, type: 2}

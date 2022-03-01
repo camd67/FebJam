@@ -1,6 +1,7 @@
 using System;
 using Shared;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -32,8 +33,7 @@ namespace Player
             healthBar.ComputeCurrent(currentHealth, initialHealth);
             if (currentHealth <= 0)
             {
-                Destroy(gameObject);
-                Debug.Log("Player was destroyed");
+                SceneManager.LoadScene("GameOver");
             }
         }
 
